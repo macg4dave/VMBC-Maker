@@ -6,7 +6,11 @@
 	<dict>
 		<key>Resources/Scripts/main.scpt</key>
 		<data>
-		f//kFfGR6HekVub87Zz4hfALg9M=
+		TqREUJ4MCXdD5Mn0R023yOs17mo=
+		</data>
+		<key>Resources/VMXFILE/vmxfile.txt</key>
+		<data>
+		ejNA6g33i1DDBpXfIoUefeUgX+8=
 		</data>
 		<key>Resources/applet.icns</key>
 		<data>
@@ -14,7 +18,7 @@
 		</data>
 		<key>Resources/applet.rsrc</key>
 		<data>
-		aHdtV1/UirfdvVW0NLkXz49ORAA=
+		A324SnYgvyQQ9s2UVmclKk8C8xA=
 		</data>
 		<key>Resources/description.rtfd/TXT.rtf</key>
 		<data>
@@ -27,11 +31,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			f//kFfGR6HekVub87Zz4hfALg9M=
+			TqREUJ4MCXdD5Mn0R023yOs17mo=
 			</data>
 			<key>hash2</key>
 			<data>
-			2hwZVPJI2iTE81hR88GlTQAMcXhH7AYr03n8BK6KuRs=
+			BoP13v99yVHYvr5C3XFLhJu4ECUJIBFi0iwTmmiANjE=
+			</data>
+		</dict>
+		<key>Resources/VMXFILE/vmxfile.txt</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ejNA6g33i1DDBpXfIoUefeUgX+8=
+			</data>
+			<key>hash2</key>
+			<data>
+			qxDcYfxsRW22T14DFLTPeCeqgaVd47r3u2k2Az4JmBA=
 			</data>
 		</dict>
 		<key>Resources/applet.icns</key>
@@ -49,11 +64,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aHdtV1/UirfdvVW0NLkXz49ORAA=
+			A324SnYgvyQQ9s2UVmclKk8C8xA=
 			</data>
 			<key>hash2</key>
 			<data>
-			11a3k7LrQwgMeSbCvd1gy7xoEm75GVbPQrTnNEqRRGc=
+			XucMEDHLSGlBSLQBmlGYhCe1px5bMFz0t3sGiNIjfD8=
 			</data>
 		</dict>
 		<key>Resources/description.rtfd/TXT.rtf</key>
