@@ -1,0 +1,348 @@
+property ntfs_disk_list : {}
+
+property main_disk_list : {}
+
+property unix_user : {}
+
+property vmware_path_unix : {}
+
+property nice_names : {}
+
+property chosen_dia_disk : {}
+
+property chose_disk_num : {}
+
+property my_Path : {}
+
+property tmp_dir : {}
+
+
+
+
+
+-- Program Start
+
+clear_lists()
+
+set unix_user to do shell script "whoami"
+
+make_path_me()
+
+make_vmware_path()
+
+make_tmp()
+
+make_ntfs_disk_list()
+
+display_no_disks()
+
+-- make two list of main_disk_list and nice_names.  both list have the same item numbers
+ntfs_disk_info()
+
+display_mount()
+
+--get the item number of chosen_dia_disk by looking up the same name of list nice_names
+getIndex of chosen_dia_disk from nice_names
+set chose_disk_num to result
+
+make_bootcamp_vmx()
+
+--Program END
+
+
+
+
+
+on clear_lists()
+	
+	set AppleScript's text item delimiters to ""
+	
+	make_path_me()
+	
+	set ntfs_disk_list to {}
+	
+	set main_disk_list to {}
+	
+	set unix_user to {}
+	
+	set vmware_path_unix to {}
+	
+	set nice_names to {}
+	
+	set chosen_dia_disk to {}
+	
+	set chose_disk_num to {}
+	
+	set my_Path to {}
+	
+	set tmp_dir to {}
+	
+end clear_lists
+
+
+
+
+
+on make_path_me()
+	
+	set my_Path to POSIX path of (path to me)
+	
+	set my_Path to my_Path & "Contents/Resources/VMXFILE/vmxfile.txt"
+	
+	set my_Path to quoted form of my_Path
+	
+end make_path_me
+
+
+
+
+
+on make_vmware_path()
+	
+	try
+		tell "finder"
+			get path to application "VMware Fusion"
+			set vmware_path to result
+		end tell
+	on error
+		display alert "Vmware Fusion could not be found" & return & "Try running Vmware fusion before running VMBC Maker" buttons {"Ok"} default button 1
+		quit
+	end try
+	
+	set vmware_path_unix to POSIX path of vmware_path
+	
+	set vmware_path_unix to vmware_path_unix & "Contents/Library/vmware-rawdiskCreator"
+	
+	set vmware_path_unix to quoted form of vmware_path_unix
+	
+end make_vmware_path
+
+
+
+
+
+on make_tmp()
+	
+	set tmp_dir to "/tmp/" & unix_user & "VMBCTMP/"
+	
+	try
+		do shell script "rm -r " & tmp_dir
+	end try
+	
+	do shell script "mkdir -p /tmp/" & unix_user & "VMBCTMP/"
+	
+end make_tmp
+
+
+
+
+
+on make_ntfs_disk_list()
+	
+	--Get all volumes
+	do shell script "diskutil info -all > " & tmp_dir & unix_user & "full_disk_info"
+	set all_disks to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep 'disk' | grep 'Part of Whole:' | awk '{print $4}' | awk '!a[$0]++'" as string
+	
+	set num_disks to count of word of all_disks
+	
+	
+	-- finds all ntfs disks and adds them to ntfs_disk_list
+	repeat while num_disks > -1
+		
+		set is_ntfs_disk to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 10 'disk" & num_disks & "s' | grep 'NTFS' | grep 'File System Personality:' | awk '{print $4}'"
+		if is_ntfs_disk contains "NTFS" then
+			set this_disk_number to num_disks
+			set get_full_ntfs_disk to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep 'disk" & this_disk_number & "' | grep 'Device Identifier:' | awk '{print $3}'"
+			set full_num_disks to count of word of get_full_ntfs_disk
+			
+			repeat while full_num_disks > -1
+				
+				set is_ntfs_partdisk to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 9 'disk" & this_disk_number & "s" & full_num_disks & "' | grep 'NTFS' | grep 'File System Personality:' | awk '{print $4}'"
+				
+				if is_ntfs_partdisk contains "NTFS" then
+					set disk_number to "disk" & this_disk_number & "s" & full_num_disks
+					
+					copy disk_number to end of ntfs_disk_list
+				end if
+				
+				set full_num_disks to full_num_disks - 1
+				
+			end repeat
+		end if
+		
+		set num_disks to num_disks - 1
+	end repeat
+	
+end make_ntfs_disk_list
+
+
+
+
+
+on ntfs_disk_info()
+	
+	set ntfs_num to count of ntfs_disk_list
+	
+	repeat while ntfs_num > 0
+		
+		set ntfs_disk_item to item ntfs_num of ntfs_disk_list
+		
+		set is_size to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 21 '" & ntfs_disk_item & "'| grep 'Disk Size:' | cut -c 30- | uniq | awk '{print $1 $2}'"
+		set is_mnt to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 19 '" & ntfs_disk_item & "'| grep 'Mounted:' | cut -c 30- | uniq"
+		set is_uuid to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 19 '" & ntfs_disk_item & "'| grep 'Partition UUID:' | cut -c 30- | uniq"
+		set is_vol to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 19 '" & ntfs_disk_item & "'| grep 'Volume Name:' | cut -c 30- | uniq"
+		set is_type to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 19 '" & ntfs_disk_item & "'| grep 'Protocol:' | cut -c 30- | uniq"
+		
+		set make_nice_names to is_vol & tab & tab & is_size & tab & tab & is_type & tab & tab & ntfs_disk_item
+		
+		set is_type to quoted form of is_type
+		set is_vol to quoted form of is_vol
+		set ntfs_disk_item to quoted form of ntfs_disk_item
+		set is_size to quoted form of is_size
+		set is_mnt to quoted form of is_mnt
+		set is_uuid to quoted form of is_uuid
+		
+		set all_ntfs_disk to ".Xx**xX." & is_type & ".Xx**xX." & is_uuid & ".Xx**xX." & is_vol & ".Xx**xX." & ntfs_disk_item & ".Xx**xX." & is_size & ".Xx**xX." & is_mnt
+		
+		
+		copy all_ntfs_disk to end of main_disk_list
+		
+		copy make_nice_names to end of nice_names
+		
+		set ntfs_num to ntfs_num - 1
+		
+	end repeat
+	
+end ntfs_disk_info
+
+
+
+
+
+on display_mount()
+	
+	if nice_names is {} then
+		display_no_disks()
+	end if
+	
+	set chosen_dia_disk to (choose from list nice_names with prompt "Which disk do you wish to " & return & "Create a Bootcamp VMX of?" with title "VMBC Volumes") as string
+	
+	
+end display_mount
+
+
+
+
+
+to getIndex of i from l
+	repeat with n from 1 to count l
+		if l's item n is i then return n
+	end repeat
+	0
+end getIndex
+
+
+
+
+
+on display_no_disks()
+	
+	set ntfs_count to count of ntfs_disk_list
+	
+	if ntfs_count is less than 1 then
+		
+		set theAlertText to "An error has occurred."
+		set theAlertMessage to "No NTFS formated volumes could be found"
+		display alert theAlertText message theAlertMessage as critical buttons {"Ok"} default button "Ok"
+		quit
+		
+	end if
+	
+end display_no_disks
+
+
+
+
+
+on display_make_error()
+	
+	set ntfs_count to count of ntfs_disk_list
+	
+	if ntfs_count is less than 1 then
+		
+		set theAlertText to "An error has occurred."
+		set theAlertMessage to "There was an error creating the VMware Bootcamp Volume"
+		display alert theAlertText message theAlertMessage as critical buttons {"Ok"} default button "Ok"
+		quit
+		
+	end if
+	
+end display_make_error
+
+
+
+
+
+on make_bootcamp_vmx()
+	
+	if chose_disk_num is less than "1" then
+		quit
+	end if
+	
+	set unix_disk_cho to item chose_disk_num of main_disk_list
+	
+	set AppleScript's text item delimiters to {".Xx**xX."}
+	
+	set unix_vmware_disk to text item 5 of unix_disk_cho
+	
+	set unix_vmware_name to text item 4 of unix_disk_cho
+	
+	set vm_dir to do shell script "mktemp -d " & tmp_dir & "/" & unix_vmware_name & ".XXXXXX"
+	
+	set vm_dir to quoted form of vm_dir
+	
+	set unix_vmware_fulldisk to do shell script "echo " & unix_vmware_disk & " | rev | cut -c 3- | rev"
+	
+	set unix_vmware_disknum to do shell script "echo " & unix_vmware_disk & " | cut -c 7-"
+	
+	set unix_vmware_efi to do shell script "diskutil list /dev/" & unix_vmware_fulldisk & " | grep EFI | awk '{ print $1 }' | tr -d ':'"
+	
+	try
+		
+		do shell script "diskutil unmount /dev/" & unix_vmware_disk
+		
+	end try
+	
+	try
+		
+		do shell script vmware_path_unix & " create /dev/" & unix_vmware_fulldisk & " " & unix_vmware_efi & "," & unix_vmware_disknum & " " & vm_dir & "'/'" & unix_vmware_name & " ide | cat " & my_Path & " > " & vm_dir & "/" & unix_vmware_name & ".vmx"
+		
+		set search_string to "XXXXAPPLESCRIPTNAMEXXXX"
+		
+		set replacement_text to unix_vmware_name
+		
+		set AppleScript's text item delimiters to ""
+		
+		set chars to every character of replacement_text
+		repeat with i from 2 to length of chars
+			
+			if item i of chars as text is equal to " " then
+				set item i of chars to "\\ "
+				
+			end if
+		end repeat
+		
+		set replacement_text to every item of chars
+		
+		
+		do shell script "perl -pi -e 's/" & search_string & "/" & replacement_text & "/g' " & vm_dir & "/" & unix_vmware_name & "'.vmx'"
+		
+		
+		do shell script "mv " & vm_dir & " ~/Desktop/" & unix_vmware_name & ".vmwarevm"
+		
+	on error
+		display_make_error()
+		
+	end try
+	
+end make_bootcamp_vmx
