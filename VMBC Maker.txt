@@ -297,6 +297,8 @@ on make_bootcamp_vmx()
 	
 	set unix_vmware_name to text item 4 of unix_disk_cho
 	
+	set unix_vmware_mnt to text item 7 of unix_disk_cho
+	
 	set vm_dir to do shell script "mktemp -d " & tmp_dir & "/" & unix_vmware_name & ".XXXXXX"
 	
 	set vm_dir to quoted form of vm_dir
@@ -307,11 +309,23 @@ on make_bootcamp_vmx()
 	
 	set unix_vmware_efi to do shell script "diskutil list /dev/" & unix_vmware_fulldisk & " | grep EFI | awk '{ print $1 }' | tr -d ':'"
 	
-	try
+	if unix_vmware_mnt is "Yes" then
 		
-		do shell script "diskutil unmount /dev/" & unix_vmware_disk
+		try
+			
+			do shell script "diskutil unmount /dev/" & unix_vmware_disk
+			
+		on error
+			set theAlertText to "An error has occurred."
+			set theAlertMessage to "There was an error unmounting the disk"
+			display alert theAlertText message theAlertMessage as critical buttons {"Ok"} default button "Ok"
+			quit
+			
+		end try
 		
-	end try
+	end if
+	
+	
 	
 	try
 		

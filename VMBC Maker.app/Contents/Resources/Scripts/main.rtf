@@ -1,0 +1,2013 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande-Bold;\f1\fswiss\fcharset0 ArialMT;\f2\fnil\fcharset0 LucidaGrande;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red136\green0\blue171;\red0\green93\blue0;
+\red76\green78\blue78;\red0\green36\blue113;\red0\green74\blue255;\red108\green5\blue211;\red0\green0\blue255;
+\red0\green149\blue174;\red135\green7\blue5;\red0\green22\blue175;\red68\green21\blue176;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c0;\csgenericrgb\c53495\c0\c67080;\csgenericrgb\c0\c36300\c0;
+\csgenericrgb\c29999\c30457\c30457;\csgenericrgb\c0\c13970\c44369;\csgenericrgb\c0\c29116\c100000;\csgenericrgb\c42337\c1841\c82833;\csgenericrgb\c0\c0\c100000;
+\csgenericrgb\c0\c58473\c68181;\csgenericrgb\c52830\c2637\c1969;\csgenericrgb\c0\c8733\c68782;\csgenericrgb\c26552\c8264\c69162;}
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b\fs28 \cf2 \CocoaLigature0 property
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_list
+\f1 \cf3  : \{\}\
+\
+
+\f0\b \cf2 property
+\f1\b0 \cf3  
+\f2 \cf4 main_disk_list
+\f1 \cf3  : \{\}\
+\
+
+\f0\b \cf2 property
+\f1\b0 \cf3  
+\f2 \cf4 unix_user
+\f1 \cf3  : \{\}\
+\
+
+\f0\b \cf2 property
+\f1\b0 \cf3  
+\f2 \cf4 vmware_path_unix
+\f1 \cf3  : \{\}\
+\
+
+\f0\b \cf2 property
+\f1\b0 \cf3  
+\f2 \cf4 nice_names
+\f1 \cf3  : \{\}\
+\
+
+\f0\b \cf2 property
+\f1\b0 \cf3  
+\f2 \cf4 chosen_dia_disk
+\f1 \cf3  : \{\}\
+\
+
+\f0\b \cf2 property
+\f1\b0 \cf3  
+\f2 \cf4 chose_disk_num
+\f1 \cf3  : \{\}\
+\
+
+\f0\b \cf2 property
+\f1\b0 \cf3  
+\f2 \cf4 my_Path
+\f1 \cf3  : \{\}\
+\
+
+\f0\b \cf2 property
+\f1\b0 \cf3  
+\f2 \cf4 tmp_dir
+\f1 \cf3  : \{\}\
+\
+\
+\
+\
+\
+
+\i\fs26 \cf5 -- Program Start
+\i0\fs28 \cf3 \
+\
+
+\f2 \cf4 clear_lists
+\f1 \cf3 ()\
+\
+
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 unix_user
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "whoami"
+\f1 \cf3 \
+\
+
+\f2 \cf4 make_path_me
+\f1 \cf3 ()\
+\
+
+\f2 \cf4 make_vmware_path
+\f1 \cf3 ()\
+\
+
+\f2 \cf4 make_tmp
+\f1 \cf3 ()\
+\
+
+\f2 \cf4 make_ntfs_disk_list
+\f1 \cf3 ()\
+\
+
+\f2 \cf4 display_no_disks
+\f1 \cf3 ()\
+\
+
+\i\fs26 \cf5 -- make two list of main_disk_list and nice_names.  both list have the same item numbers
+\i0\fs28 \cf3 \
+
+\f2 \cf4 ntfs_disk_info
+\f1 \cf3 ()\
+\
+
+\f2 \cf4 display_mount
+\f1 \cf3 ()\
+\
+
+\i\fs26 \cf5 --get the item number of chosen_dia_disk by looking up the same name of list nice_names
+\i0\fs28 \cf3 \
+
+\f2 \cf4 getIndex
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 chosen_dia_disk
+\f1 \cf3  
+\f2 \cf7 from
+\f1 \cf3  
+\f2 \cf4 nice_names
+\f1 \cf3 \
+
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 chose_disk_num
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 result
+\i0\b0 \cf3 \
+\
+
+\f2 \cf4 make_bootcamp_vmx
+\f1 \cf3 ()\
+\
+
+\i\fs26 \cf5 --Program END
+\i0\fs28 \cf3 \
+\
+\
+\
+\
+\
+
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f2 \cf4 clear_lists
+\f1 \cf3 ()\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\i\b \cf8 AppleScript's
+\i0\b0 \cf3  
+\i\b \cf8 text item delimiters
+\i0\b0 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 ""
+\f1 \cf3 \
+	\
+	
+\f2 \cf4 make_path_me
+\f1 \cf3 ()\
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_list
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  \{\}\
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 main_disk_list
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  \{\}\
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 unix_user
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  \{\}\
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 vmware_path_unix
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  \{\}\
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 nice_names
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  \{\}\
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 chosen_dia_disk
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  \{\}\
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 chose_disk_num
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  \{\}\
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 my_Path
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  \{\}\
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 tmp_dir
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  \{\}\
+	\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f2 \cf4 clear_lists
+\f1 \cf3 \
+\
+\
+\
+\
+\
+
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f2 \cf4 make_path_me
+\f1 \cf3 ()\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 my_Path
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 POSIX path
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  (
+\f0\b \cf6 path to
+\f1\b0 \cf3  
+\f0\b \cf2 me
+\f1\b0 \cf3 )\
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 my_Path
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf4 my_Path
+\f1 \cf3  & 
+\f2 \cf2 "Contents/Resources/VMXFILE/vmxfile.txt"
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 my_Path
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 quoted form
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 my_Path
+\f1 \cf3 \
+	\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f2 \cf4 make_path_me
+\f1 \cf3 \
+\
+\
+\
+\
+\
+
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f2 \cf4 make_vmware_path
+\f1 \cf3 ()\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	\
+	
+\f0\b \cf2 try
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f0\b \cf2 tell
+\f1\b0 \cf3  
+\f2 \cf2 "finder"
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li3563\fi-3564\pardirnatural\partightenfactor0
+\cf3 			
+\f0\b \cf2 get
+\f1\b0 \cf3  
+\f0\b \cf6 path to
+\f1\b0 \cf3  
+\f2 \cf9 application
+\f1 \cf3  
+\f2 \cf2 "VMware Fusion"
+\f1 \cf3 \
+			
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 vmware_path
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 result
+\i0\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 tell
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f0\b \cf2 error
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f0\b \cf6 display alert
+\f1\b0 \cf3  
+\f2 \cf2 "Vmware Fusion could not be found"
+\f1 \cf3  & 
+\i\b \cf8 return
+\i0\b0 \cf3  & 
+\f2 \cf2 "Try running Vmware fusion before running VMBC Maker"
+\f1 \cf3  
+\f2 \cf10 buttons
+\f1 \cf3  \{
+\f2 \cf2 "Ok"
+\f1 \cf3 \} 
+\f2 \cf10 default button
+\f1 \cf3  
+\f2 \cf11 1
+\f1 \cf3 \
+		
+\f0\b \cf12 quit
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 try
+\f1\b0 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 vmware_path_unix
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 POSIX path
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 vmware_path
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 vmware_path_unix
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf4 vmware_path_unix
+\f1 \cf3  & 
+\f2 \cf2 "Contents/Library/vmware-rawdiskCreator"
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 vmware_path_unix
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 quoted form
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 vmware_path_unix
+\f1 \cf3 \
+	\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f2 \cf4 make_vmware_path
+\f1 \cf3 \
+\
+\
+\
+\
+\
+
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f2 \cf4 make_tmp
+\f1 \cf3 ()\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 tmp_dir
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 "/tmp/"
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "VMBCTMP/"
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 try
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "rm -r "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 try
+\f1\b0 \cf3 \
+	\
+	
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "mkdir -p /tmp/"
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "VMBCTMP/"
+\f1 \cf3 \
+	\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f2 \cf4 make_tmp
+\f1 \cf3 \
+\
+\
+\
+\
+\
+
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f2 \cf4 make_ntfs_disk_list
+\f1 \cf3 ()\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	\
+	
+\i\fs26 \cf5 --Get all volumes
+\i0\fs28 \cf3 \
+	
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "diskutil info -all > "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "full_disk_info"
+\f1 \cf3 \
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 all_disks
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "cat "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "full_disk_info | grep 'disk' | grep 'Part of Whole:' | awk '\{print $4\}' | awk '!a[$0]++'"
+\f1 \cf3  
+\f2 \cf10 as
+\f1 \cf3  
+\f2 \cf9 string
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 num_disks
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf12 count
+\f1\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf9 word
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 all_disks
+\f1 \cf3 \
+	\
+	\
+	
+\i\fs26 \cf5 -- finds all ntfs disks and adds them to ntfs_disk_list
+\i0\fs28 \cf3 \
+	
+\f0\b \cf2 repeat
+\f1\b0 \cf3  
+\f0\b \cf2 while
+\f1\b0 \cf3  
+\f2 \cf4 num_disks
+\f1 \cf3  > 
+\f2 \cf11 -1
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_ntfs_disk
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "cat "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "full_disk_info | grep -A 10 'disk"
+\f1 \cf3  & 
+\f2 \cf4 num_disks
+\f1 \cf3  & 
+\f2 \cf2 "s' | grep 'NTFS' | grep 'File System Personality:' | awk '\{print $4\}'"
+\f1 \cf3 \
+		
+\f0\b \cf2 if
+\f1\b0 \cf3  
+\f2 \cf4 is_ntfs_disk
+\f1 \cf3  
+\f0\b \cf2 contains
+\f1\b0 \cf3  
+\f2 \cf2 "NTFS"
+\f1 \cf3  
+\f0\b \cf2 then
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li3563\fi-3564\pardirnatural\partightenfactor0
+\cf3 			
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 this_disk_number
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf4 num_disks
+\f1 \cf3 \
+			
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 get_full_ntfs_disk
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "cat "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "full_disk_info | grep 'disk"
+\f1 \cf3  & 
+\f2 \cf4 this_disk_number
+\f1 \cf3  & 
+\f2 \cf2 "' | grep 'Device Identifier:' | awk '\{print $3\}'"
+\f1 \cf3 \
+			
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 full_num_disks
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf12 count
+\f1\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf9 word
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 get_full_ntfs_disk
+\f1 \cf3 \
+			\
+			
+\f0\b \cf2 repeat
+\f1\b0 \cf3  
+\f0\b \cf2 while
+\f1\b0 \cf3  
+\f2 \cf4 full_num_disks
+\f1 \cf3  > 
+\f2 \cf11 -1
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li4454\fi-4455\pardirnatural\partightenfactor0
+\cf3 				\
+				
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_ntfs_partdisk
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "cat "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "full_disk_info | grep -A 9 'disk"
+\f1 \cf3  & 
+\f2 \cf4 this_disk_number
+\f1 \cf3  & 
+\f2 \cf2 "s"
+\f1 \cf3  & 
+\f2 \cf4 full_num_disks
+\f1 \cf3  & 
+\f2 \cf2 "' | grep 'NTFS' | grep 'File System Personality:' | awk '\{print $4\}'"
+\f1 \cf3 \
+				\
+				
+\f0\b \cf2 if
+\f1\b0 \cf3  
+\f2 \cf4 is_ntfs_partdisk
+\f1 \cf3  
+\f0\b \cf2 contains
+\f1\b0 \cf3  
+\f2 \cf2 "NTFS"
+\f1 \cf3  
+\f0\b \cf2 then
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li5345\fi-5346\pardirnatural\partightenfactor0
+\cf3 					
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 disk_number
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 "disk"
+\f1 \cf3  & 
+\f2 \cf4 this_disk_number
+\f1 \cf3  & 
+\f2 \cf2 "s"
+\f1 \cf3  & 
+\f2 \cf4 full_num_disks
+\f1 \cf3 \
+					\
+					
+\f0\b \cf2 copy
+\f1\b0 \cf3  
+\f2 \cf4 disk_number
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_list
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li4454\fi-4455\pardirnatural\partightenfactor0
+\cf3 				
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 if
+\f1\b0 \cf3 \
+				\
+				
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 full_num_disks
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf4 full_num_disks
+\f1 \cf3  - 
+\f2 \cf11 1
+\f1 \cf3 \
+				\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li3563\fi-3564\pardirnatural\partightenfactor0
+\cf3 			
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 repeat
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 if
+\f1\b0 \cf3 \
+		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 num_disks
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf4 num_disks
+\f1 \cf3  - 
+\f2 \cf11 1
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 repeat
+\f1\b0 \cf3 \
+	\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f2 \cf4 make_ntfs_disk_list
+\f1 \cf3 \
+\
+\
+\
+\
+\
+
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_info
+\f1 \cf3 ()\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_num
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf12 count
+\f1\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_list
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 repeat
+\f1\b0 \cf3  
+\f0\b \cf2 while
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_num
+\f1 \cf3  > 
+\f2 \cf11 0
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_item
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf9 item
+\f1 \cf3  
+\f2 \cf4 ntfs_num
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_list
+\f1 \cf3 \
+		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_size
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "cat "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "full_disk_info | grep -A 21 '"
+\f1 \cf3  & 
+\f2 \cf4 ntfs_disk_item
+\f1 \cf3  & 
+\f2 \cf2 "'| grep 'Disk Size:' | cut -c 30- | uniq | awk '\{print $1 $2\}'"
+\f1 \cf3 \
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_mnt
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "cat "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "full_disk_info | grep -A 19 '"
+\f1 \cf3  & 
+\f2 \cf4 ntfs_disk_item
+\f1 \cf3  & 
+\f2 \cf2 "'| grep 'Mounted:' | cut -c 30- | uniq"
+\f1 \cf3 \
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_uuid
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "cat "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "full_disk_info | grep -A 19 '"
+\f1 \cf3  & 
+\f2 \cf4 ntfs_disk_item
+\f1 \cf3  & 
+\f2 \cf2 "'| grep 'Partition UUID:' | cut -c 30- | uniq"
+\f1 \cf3 \
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_vol
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "cat "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "full_disk_info | grep -A 19 '"
+\f1 \cf3  & 
+\f2 \cf4 ntfs_disk_item
+\f1 \cf3  & 
+\f2 \cf2 "'| grep 'Volume Name:' | cut -c 30- | uniq"
+\f1 \cf3 \
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_type
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "cat "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3  & 
+\f2 \cf4 unix_user
+\f1 \cf3  & 
+\f2 \cf2 "full_disk_info | grep -A 19 '"
+\f1 \cf3  & 
+\f2 \cf4 ntfs_disk_item
+\f1 \cf3  & 
+\f2 \cf2 "'| grep 'Protocol:' | cut -c 30- | uniq"
+\f1 \cf3 \
+		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 make_nice_names
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf4 is_vol
+\f1 \cf3  & 
+\i\b \cf8 tab
+\i0\b0 \cf3  & 
+\i\b \cf8 tab
+\i0\b0 \cf3  & 
+\f2 \cf4 is_size
+\f1 \cf3  & 
+\i\b \cf8 tab
+\i0\b0 \cf3  & 
+\i\b \cf8 tab
+\i0\b0 \cf3  & 
+\f2 \cf4 is_type
+\f1 \cf3  & 
+\i\b \cf8 tab
+\i0\b0 \cf3  & 
+\i\b \cf8 tab
+\i0\b0 \cf3  & 
+\f2 \cf4 ntfs_disk_item
+\f1 \cf3 \
+		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_type
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 quoted form
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 is_type
+\f1 \cf3 \
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_vol
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 quoted form
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 is_vol
+\f1 \cf3 \
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_item
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 quoted form
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_item
+\f1 \cf3 \
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_size
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 quoted form
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 is_size
+\f1 \cf3 \
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_mnt
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 quoted form
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 is_mnt
+\f1 \cf3 \
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 is_uuid
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 quoted form
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 is_uuid
+\f1 \cf3 \
+		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 all_ntfs_disk
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 ".Xx**xX."
+\f1 \cf3  & 
+\f2 \cf4 is_type
+\f1 \cf3  & 
+\f2 \cf2 ".Xx**xX."
+\f1 \cf3  & 
+\f2 \cf4 is_uuid
+\f1 \cf3  & 
+\f2 \cf2 ".Xx**xX."
+\f1 \cf3  & 
+\f2 \cf4 is_vol
+\f1 \cf3  & 
+\f2 \cf2 ".Xx**xX."
+\f1 \cf3  & 
+\f2 \cf4 ntfs_disk_item
+\f1 \cf3  & 
+\f2 \cf2 ".Xx**xX."
+\f1 \cf3  & 
+\f2 \cf4 is_size
+\f1 \cf3  & 
+\f2 \cf2 ".Xx**xX."
+\f1 \cf3  & 
+\f2 \cf4 is_mnt
+\f1 \cf3 \
+		\
+		\
+		
+\f0\b \cf2 copy
+\f1\b0 \cf3  
+\f2 \cf4 all_ntfs_disk
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 main_disk_list
+\f1 \cf3 \
+		\
+		
+\f0\b \cf2 copy
+\f1\b0 \cf3  
+\f2 \cf4 make_nice_names
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 nice_names
+\f1 \cf3 \
+		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_num
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_num
+\f1 \cf3  - 
+\f2 \cf11 1
+\f1 \cf3 \
+		\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 repeat
+\f1\b0 \cf3 \
+	\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_info
+\f1 \cf3 \
+\
+\
+\
+\
+\
+
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f2 \cf4 display_mount
+\f1 \cf3 ()\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	\
+	
+\f0\b \cf2 if
+\f1\b0 \cf3  
+\f2 \cf4 nice_names
+\f1 \cf3  
+\f0\b \cf2 is
+\f1\b0 \cf3  \{\} 
+\f0\b \cf2 then
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f2 \cf4 display_no_disks
+\f1 \cf3 ()\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 if
+\f1\b0 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 chosen_dia_disk
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  (
+\f0\b \cf6 choose from list
+\f1\b0 \cf3  
+\f2 \cf4 nice_names
+\f1 \cf3  
+\f2 \cf10 with prompt
+\f1 \cf3  
+\f2 \cf2 "Which disk do you wish to "
+\f1 \cf3  & 
+\i\b \cf8 return
+\i0\b0 \cf3  & 
+\f2 \cf2 "Create a Bootcamp VMX of?"
+\f1 \cf3  
+\f2 \cf10 with title
+\f1 \cf3  
+\f2 \cf2 "VMBC Volumes"
+\f1 \cf3 ) 
+\f0\b \cf2 as
+\f1\b0 \cf3  
+\f2 \cf9 string
+\f1 \cf3 \
+	\
+	\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f2 \cf4 display_mount
+\f1 \cf3 \
+\
+\
+\
+\
+\
+
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf4 getIndex
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 i
+\f1 \cf3  
+\f2 \cf7 from
+\f1 \cf3  
+\f2 \cf4 l
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 repeat
+\f1\b0 \cf3  
+\f0\b \cf2 with
+\f1\b0 \cf3  
+\f2 \cf4 n
+\f1 \cf3  
+\f0\b \cf2 from
+\f1\b0 \cf3  
+\f2 \cf11 1
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf12 count
+\f1\b0 \cf3  
+\f2 \cf4 l
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f0\b \cf2 if
+\f1\b0 \cf3  
+\f2 \cf4 l's
+\f1 \cf3  
+\f2 \cf9 item
+\f1 \cf3  
+\f2 \cf4 n
+\f1 \cf3  
+\f0\b \cf2 is
+\f1\b0 \cf3  
+\f2 \cf4 i
+\f1 \cf3  
+\f0\b \cf2 then
+\f1\b0 \cf3  
+\f0\b \cf2 return
+\f1\b0 \cf3  
+\f2 \cf4 n
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 repeat
+\f1\b0 \cf3 \
+	
+\f2 \cf11 0
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f2 \cf4 getIndex
+\f1 \cf3 \
+\
+\
+\
+\
+\
+
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f2 \cf4 display_no_disks
+\f1 \cf3 ()\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_count
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf12 count
+\f1\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_list
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 if
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_count
+\f1 \cf3  
+\f0\b \cf2 is
+\f1\b0 \cf3  
+\f0\b \cf2 less than
+\f1\b0 \cf3  
+\f2 \cf11 1
+\f1 \cf3  
+\f0\b \cf2 then
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 theAlertText
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 "An error has occurred."
+\f1 \cf3 \
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 theAlertMessage
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 "No NTFS formated volumes could be found"
+\f1 \cf3 \
+		
+\f0\b \cf6 display alert
+\f1\b0 \cf3  
+\f2 \cf4 theAlertText
+\f1 \cf3  
+\f2 \cf10 message
+\f1 \cf3  
+\f2 \cf4 theAlertMessage
+\f1 \cf3  
+\f2 \cf10 as
+\f1 \cf3  
+\i\b \cf13 critical
+\i0\b0 \cf3  
+\f2 \cf10 buttons
+\f1 \cf3  \{
+\f2 \cf2 "Ok"
+\f1 \cf3 \} 
+\f2 \cf10 default button
+\f1 \cf3  
+\f2 \cf2 "Ok"
+\f1 \cf3 \
+		
+\f0\b \cf12 quit
+\f1\b0 \cf3 \
+		\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 if
+\f1\b0 \cf3 \
+	\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f2 \cf4 display_no_disks
+\f1 \cf3 \
+\
+\
+\
+\
+\
+
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f2 \cf4 display_make_error
+\f1 \cf3 ()\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_count
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf12 count
+\f1\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_disk_list
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 if
+\f1\b0 \cf3  
+\f2 \cf4 ntfs_count
+\f1 \cf3  
+\f0\b \cf2 is
+\f1\b0 \cf3  
+\f0\b \cf2 less than
+\f1\b0 \cf3  
+\f2 \cf11 1
+\f1 \cf3  
+\f0\b \cf2 then
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 theAlertText
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 "An error has occurred."
+\f1 \cf3 \
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 theAlertMessage
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 "There was an error creating the VMware Bootcamp Volume"
+\f1 \cf3 \
+		
+\f0\b \cf6 display alert
+\f1\b0 \cf3  
+\f2 \cf4 theAlertText
+\f1 \cf3  
+\f2 \cf10 message
+\f1 \cf3  
+\f2 \cf4 theAlertMessage
+\f1 \cf3  
+\f2 \cf10 as
+\f1 \cf3  
+\i\b \cf13 critical
+\i0\b0 \cf3  
+\f2 \cf10 buttons
+\f1 \cf3  \{
+\f2 \cf2 "Ok"
+\f1 \cf3 \} 
+\f2 \cf10 default button
+\f1 \cf3  
+\f2 \cf2 "Ok"
+\f1 \cf3 \
+		
+\f0\b \cf12 quit
+\f1\b0 \cf3 \
+		\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 if
+\f1\b0 \cf3 \
+	\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f2 \cf4 display_make_error
+\f1 \cf3 \
+\
+\
+\
+\
+\
+
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f2 \cf4 make_bootcamp_vmx
+\f1 \cf3 ()\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	\
+	
+\f0\b \cf2 if
+\f1\b0 \cf3  
+\f2 \cf4 chose_disk_num
+\f1 \cf3  
+\f0\b \cf2 is
+\f1\b0 \cf3  
+\f0\b \cf2 less than
+\f1\b0 \cf3  
+\f2 \cf2 "1"
+\f1 \cf3  
+\f0\b \cf2 then
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f0\b \cf12 quit
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 if
+\f1\b0 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 unix_disk_cho
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf9 item
+\f1 \cf3  
+\f2 \cf4 chose_disk_num
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 main_disk_list
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\i\b \cf8 AppleScript's
+\i0\b0 \cf3  
+\i\b \cf8 text item delimiters
+\i0\b0 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  \{
+\f2 \cf2 ".Xx**xX."
+\f1 \cf3 \}\
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 unix_vmware_disk
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf9 text item
+\f1 \cf3  
+\f2 \cf11 5
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 unix_disk_cho
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 unix_vmware_name
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf9 text item
+\f1 \cf3  
+\f2 \cf11 4
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 unix_disk_cho
+\f1 \cf3 \
+	\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1308\fi-1309\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 unix_vmware_mnt
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf9 text item
+\f1 \cf3  
+\f2 \cf11 7
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 unix_disk_cho
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 vm_dir
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "mktemp -d "
+\f1 \cf3  & 
+\f2 \cf4 tmp_dir
+\f1 \cf3  & 
+\f2 \cf2 "/"
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_name
+\f1 \cf3  & 
+\f2 \cf2 ".XXXXXX"
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 vm_dir
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 quoted form
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 vm_dir
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 unix_vmware_fulldisk
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "echo "
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_disk
+\f1 \cf3  & 
+\f2 \cf2 " | rev | cut -c 3- | rev"
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 unix_vmware_disknum
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "echo "
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_disk
+\f1 \cf3  & 
+\f2 \cf2 " | cut -c 7-"
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 unix_vmware_efi
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "diskutil list /dev/"
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_fulldisk
+\f1 \cf3  & 
+\f2 \cf2 " | grep EFI | awk '\{ print $1 \}' | tr -d ':'"
+\f1 \cf3 \
+	\
+	
+\f0\b \cf2 if
+\f1\b0 \cf3  
+\f2 \cf4 unix_vmware_mnt
+\f1 \cf3  
+\f0\b \cf2 is
+\f1\b0 \cf3  
+\f2 \cf2 "Yes"
+\f1 \cf3  
+\f0\b \cf2 then
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		\
+		
+\f0\b \cf2 try
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li3563\fi-3564\pardirnatural\partightenfactor0
+\cf3 			\
+			
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "diskutil unmount /dev/"
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_disk
+\f1 \cf3 \
+			\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f0\b \cf2 error
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li3563\fi-3564\pardirnatural\partightenfactor0
+\cf3 			
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 theAlertText
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 "An error has occurred."
+\f1 \cf3 \
+			
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 theAlertMessage
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 "There was an error unmounting the disk"
+\f1 \cf3 \
+			
+\f0\b \cf6 display alert
+\f1\b0 \cf3  
+\f2 \cf4 theAlertText
+\f1 \cf3  
+\f2 \cf10 message
+\f1 \cf3  
+\f2 \cf4 theAlertMessage
+\f1 \cf3  
+\f2 \cf10 as
+\f1 \cf3  
+\i\b \cf13 critical
+\i0\b0 \cf3  
+\f2 \cf10 buttons
+\f1 \cf3  \{
+\f2 \cf2 "Ok"
+\f1 \cf3 \} 
+\f2 \cf10 default button
+\f1 \cf3  
+\f2 \cf2 "Ok"
+\f1 \cf3 \
+			
+\f0\b \cf12 quit
+\f1\b0 \cf3 \
+			\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 try
+\f1\b0 \cf3 \
+		\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 if
+\f1\b0 \cf3 \
+	\
+	\
+	\
+	
+\f0\b \cf2 try
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		\
+		
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf4 vmware_path_unix
+\f1 \cf3  & 
+\f2 \cf2 " create /dev/"
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_fulldisk
+\f1 \cf3  & 
+\f2 \cf2 " "
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_efi
+\f1 \cf3  & 
+\f2 \cf2 ","
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_disknum
+\f1 \cf3  & 
+\f2 \cf2 " "
+\f1 \cf3  & 
+\f2 \cf4 vm_dir
+\f1 \cf3  & 
+\f2 \cf2 "'/'"
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_name
+\f1 \cf3  & 
+\f2 \cf2 " ide | cat "
+\f1 \cf3  & 
+\f2 \cf4 my_Path
+\f1 \cf3  & 
+\f2 \cf2 " > "
+\f1 \cf3  & 
+\f2 \cf4 vm_dir
+\f1 \cf3  & 
+\f2 \cf2 "/"
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_name
+\f1 \cf3  & 
+\f2 \cf2 ".vmx"
+\f1 \cf3 \
+		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 search_string
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 "XXXXAPPLESCRIPTNAMEXXXX"
+\f1 \cf3 \
+		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 replacement_text
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf4 unix_vmware_name
+\f1 \cf3 \
+		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\i\b \cf8 AppleScript's
+\i0\b0 \cf3  
+\i\b \cf8 text item delimiters
+\i0\b0 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 ""
+\f1 \cf3 \
+		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 chars
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf2 every
+\f1\b0 \cf3  
+\f2 \cf9 character
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 replacement_text
+\f1 \cf3 \
+		
+\f0\b \cf2 repeat
+\f1\b0 \cf3  
+\f0\b \cf2 with
+\f1\b0 \cf3  
+\f2 \cf4 i
+\f1 \cf3  
+\f0\b \cf2 from
+\f1\b0 \cf3  
+\f2 \cf11 2
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\i\b \cf8 length
+\i0\b0 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 chars
+\f1 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li3563\fi-3564\pardirnatural\partightenfactor0
+\cf3 			\
+			
+\f0\b \cf2 if
+\f1\b0 \cf3  
+\f2 \cf9 item
+\f1 \cf3  
+\f2 \cf4 i
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 chars
+\f1 \cf3  
+\f0\b \cf2 as
+\f1\b0 \cf3  
+\f2 \cf9 text
+\f1 \cf3  
+\f0\b \cf2 is
+\f1\b0 \cf3  
+\f0\b \cf2 equal to
+\f1\b0 \cf3  
+\f2 \cf2 " "
+\f1 \cf3  
+\f0\b \cf2 then
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li4454\fi-4455\pardirnatural\partightenfactor0
+\cf3 				
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf9 item
+\f1 \cf3  
+\f2 \cf4 i
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 chars
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f2 \cf2 "\\\\ "
+\f1 \cf3 \
+				\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li3563\fi-3564\pardirnatural\partightenfactor0
+\cf3 			
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 if
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 repeat
+\f1\b0 \cf3 \
+		\
+		
+\f0\b \cf2 set
+\f1\b0 \cf3  
+\f2 \cf4 replacement_text
+\f1 \cf3  
+\f0\b \cf2 to
+\f1\b0 \cf3  
+\f0\b \cf2 every
+\f1\b0 \cf3  
+\f2 \cf9 item
+\f1 \cf3  
+\f0\b \cf2 of
+\f1\b0 \cf3  
+\f2 \cf4 chars
+\f1 \cf3 \
+		\
+		\
+		
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "perl -pi -e 's/"
+\f1 \cf3  & 
+\f2 \cf4 search_string
+\f1 \cf3  & 
+\f2 \cf2 "/"
+\f1 \cf3  & 
+\f2 \cf4 replacement_text
+\f1 \cf3  & 
+\f2 \cf2 "/g' "
+\f1 \cf3  & 
+\f2 \cf4 vm_dir
+\f1 \cf3  & 
+\f2 \cf2 "/"
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_name
+\f1 \cf3  & 
+\f2 \cf2 "'.vmx'"
+\f1 \cf3 \
+		\
+		\
+		
+\f0\b \cf6 do shell script
+\f1\b0 \cf3  
+\f2 \cf2 "mv "
+\f1 \cf3  & 
+\f2 \cf4 vm_dir
+\f1 \cf3  & 
+\f2 \cf2 " ~/Desktop/"
+\f1 \cf3  & 
+\f2 \cf4 unix_vmware_name
+\f1 \cf3  & 
+\f2 \cf2 ".vmwarevm"
+\f1 \cf3 \
+		\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 on
+\f1\b0 \cf3  
+\f0\b \cf2 error
+\f1\b0 \cf3 \
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li2672\fi-2673\pardirnatural\partightenfactor0
+\cf3 		
+\f2 \cf4 display_make_error
+\f1 \cf3 ()\
+		\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li1781\fi-1782\pardirnatural\partightenfactor0
+\cf3 	
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f0\b \cf2 try
+\f1\b0 \cf3 \
+	\
+\pard\tx890\tx1780\tx2670\tx3561\tx4451\tx5341\tx6232\tx7122\tx8012\tx8903\tx9793\tx10683\tx11574\tx12464\tx13354\tx14245\tx15135\tx16025\tx16915\tx17806\tx18696\tx19586\tx20477\tx21367\tx22257\tx23148\tx24038\tx24928\tx25819\tx26709\tx27599\tx28490\tx29380\tx30270\tx31160\tx32051\tx32941\tx33831\tx34722\tx35612\tx36502\tx37393\tx38283\tx39173\tx40064\tx40954\tx41844\tx42735\tx43625\tx44515\tx45405\tx46296\tx47186\tx48076\tx48967\tx49857\tx50747\tx51638\tx52528\tx53418\tx54309\tx55199\tx56089\tx56980\tx57870\tx58760\tx59650\tx60541\tx61431\tx62321\tx63212\tx64102\tx64992\tx65883\tx66773\tx67663\tx68554\tx69444\tx70334\tx71225\tx72115\tx73005\tx73895\tx74786\tx75676\tx76566\tx77457\tx78347\tx79237\tx80128\tx81018\tx81908\tx82799\tx83689\tx84579\tx85470\tx86360\tx87250\tx88140\tx89031\li890\fi-891\pardirnatural\partightenfactor0
+
+\f0\b \cf2 end
+\f1\b0 \cf3  
+\f2 \cf4 make_bootcamp_vmx}
