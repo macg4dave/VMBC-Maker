@@ -14,7 +14,12 @@ property chose_disk_num : {}
 
 property my_Path : {}
 
+property unix_vmware_name : {}
+
+property vm_dir : {}
+
 property tmp_dir : {}
+
 
 
 
@@ -47,6 +52,8 @@ set chose_disk_num to result
 
 make_bootcamp_vmx()
 
+copy_vmware_vmx()
+
 --Program END
 
 
@@ -76,6 +83,13 @@ on clear_lists()
 	set my_Path to {}
 	
 	set tmp_dir to {}
+	
+	set unix_vmware_name to {}
+	
+	set vm_dir to {}
+	
+	set unix_vmware_unquotedname to {}
+	
 	
 end clear_lists
 
@@ -123,13 +137,13 @@ end make_vmware_path
 
 on make_tmp()
 	
-	set tmp_dir to "/tmp/" & unix_user & "VMBCTMP/"
+	set tmp_dir to "/tmp/" & unix_user & "VMBCTMP"
 	
 	try
 		do shell script "rm -r " & tmp_dir
 	end try
 	
-	do shell script "mkdir -p /tmp/" & unix_user & "VMBCTMP/"
+	do shell script "mkdir -p /tmp/" & unix_user & "VMBCTMP"
 	
 end make_tmp
 
@@ -297,6 +311,8 @@ on make_bootcamp_vmx()
 	
 	set unix_vmware_name to text item 4 of unix_disk_cho
 	
+	set unix_vmware_unquotedname to text item 4 of unix_disk_cho
+	
 	set unix_vmware_mnt to text item 7 of unix_disk_cho
 	
 	set vm_dir to do shell script "mktemp -d " & tmp_dir & "/" & unix_vmware_name & ".XXXXXX"
@@ -352,7 +368,7 @@ on make_bootcamp_vmx()
 		do shell script "perl -pi -e 's/" & search_string & "/" & replacement_text & "/g' " & vm_dir & "/" & unix_vmware_name & "'.vmx'"
 		
 		
-		do shell script "mv " & vm_dir & " ~/Desktop/" & unix_vmware_name & ".vmwarevm"
+		
 		
 	on error
 		display_make_error()
@@ -360,3 +376,43 @@ on make_bootcamp_vmx()
 	end try
 	
 end make_bootcamp_vmx
+
+
+
+
+
+on copy_vmware_vmx()
+	
+	set vmware_file_loc to button returned of (display dialog "Choose a save location" buttons {"Custom", "Default"} default button "Default")
+	
+	set unix_vmware_name to do shell script "echo " & unix_vmware_name
+	
+	set vmware_name_fixed to "/Users/" & unix_user & "/Documents/Virtual Machines.localized/" & unix_vmware_name & ".vmwarevm"
+	
+	set vmware_name_fixed to quoted form of vmware_name_fixed
+	
+	
+	-- make vmware folder
+	
+	if vmware_file_loc is "Default" then
+		
+		do shell script "mkdir -p ~/Documents/Virtual\\ Machines.localized"
+		
+		
+		do shell script "mv " & vm_dir & " " & vmware_name_fixed
+		
+		
+	end if
+	
+	if vmware_file_loc is "Custom" then
+		
+		set vmware_opt_save to POSIX path of (choose folder with prompt "Select save location")
+		
+		set vmware_opt_save to quoted form of vmware_opt_save
+		
+		do shell script "mv " & vm_dir & " " & vmware_opt_save & unix_vmware_name & ".vmwarevm"
+		
+		
+	end if
+	
+end copy_vmware_vmx
