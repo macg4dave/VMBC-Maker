@@ -20,40 +20,54 @@ property vm_dir : {}
 
 property tmp_dir : {}
 
+property ms32scan : false
 
 
 
 
+main_prog_load()
 
 -- Program Start
-
-clear_lists()
-
-set unix_user to do shell script "whoami"
-
-make_path_me()
-
-make_vmware_path()
-
-make_tmp()
-
-make_ntfs_disk_list()
-
-display_no_disks()
-
--- make two list of main_disk_list and nice_names.  both list have the same item numbers
-ntfs_disk_info()
-
-display_mount()
-
---get the item number of chosen_dia_disk by looking up the same name of list nice_names
-getIndex of chosen_dia_disk from nice_names
-set chose_disk_num to result
-
-make_bootcamp_vmx()
-
-copy_vmware_vmx()
-
+on main_prog_load()
+	
+	clear_lists()
+	
+	set unix_user to do shell script "whoami"
+	
+	--make_path_me()
+	
+	make_vmware_path()
+	
+	make_tmp()
+	
+	if ms32scan is false then
+		
+		make_ntfs_disk_list()
+		
+	end if
+	
+	if ms32scan is true then
+		
+		make_msfat()
+		
+	end if
+	
+	display_no_disks()
+	
+	-- make two list of main_disk_list and nice_names.  both list have the same item numbers
+	ntfs_disk_info()
+	
+	display_mount()
+	
+	--get the item number of chosen_dia_disk by looking up the same name of list nice_names
+	getIndex of chosen_dia_disk from nice_names
+	set chose_disk_num to result
+	
+	make_bootcamp_vmx()
+	
+	copy_vmware_vmx()
+	
+end main_prog_load
 --Program END
 
 
@@ -64,7 +78,7 @@ on clear_lists()
 	
 	set AppleScript's text item delimiters to ""
 	
-	make_path_me()
+	--make_path_me()
 	
 	set ntfs_disk_list to {}
 	
@@ -97,15 +111,15 @@ end clear_lists
 
 
 
-on make_path_me()
-	
-	set my_Path to POSIX path of (path to me)
-	
-	set my_Path to my_Path & "Contents/Resources/VMXFILE/vmxfile.txt"
-	
-	set my_Path to quoted form of my_Path
-	
-end make_path_me
+--on make_path_me()
+
+--set my_Path to POSIX path of (path to me)
+
+--set my_Path to my_Path & "Contents/Resources/VMXFILE/vmxfile.txt"
+
+--set my_Path to quoted form of my_Path
+
+--end make_path_me
 
 
 
@@ -164,6 +178,8 @@ on make_ntfs_disk_list()
 	repeat while num_disks > -1
 		
 		set is_ntfs_disk to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 10 'disk" & num_disks & "s' | grep 'NTFS' | grep 'File System Personality:' | awk '{print $4}'"
+		
+		
 		if is_ntfs_disk contains "NTFS" then
 			set this_disk_number to num_disks
 			set get_full_ntfs_disk to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep 'disk" & this_disk_number & "' | grep 'Device Identifier:' | awk '{print $3}'"
@@ -193,6 +209,47 @@ end make_ntfs_disk_list
 
 
 
+on make_msfat()
+	
+	--Get all volumes
+	do shell script "diskutil info -all > " & tmp_dir & unix_user & "full_disk_info"
+	set all_disks to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep 'disk' | grep 'Part of Whole:' | awk '{print $4}' | awk '!a[$0]++'" as string
+	
+	set num_disks to count of word of all_disks
+	
+	
+	-- finds all ntfs disks and adds them to ntfs_disk_list
+	repeat while num_disks > -1
+		
+		set is_ntfs_disk to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 10 'disk" & num_disks & "s' |  grep 'Partition Type:' | grep 'Microsoft Basic Data' | awk '{print $3 $4 $5}'"
+		
+		
+		if is_ntfs_disk contains "MicrosoftBasicData" then
+			set this_disk_number to num_disks
+			set get_full_ntfs_disk to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep 'disk" & this_disk_number & "' | grep 'Device Identifier:' | awk '{print $3}'"
+			set full_num_disks to count of word of get_full_ntfs_disk
+			
+			repeat while full_num_disks > -1
+				
+				set is_ntfs_partdisk to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 9 'disk" & this_disk_number & "s" & full_num_disks & "' | grep 'Partition Type:' | grep 'Microsoft Basic Data' | awk '{print $3 $4 $5}'"
+				
+				if is_ntfs_partdisk contains "MicrosoftBasicData" then
+					set disk_number to "disk" & this_disk_number & "s" & full_num_disks
+					
+					copy disk_number to end of ntfs_disk_list
+				end if
+				
+				set full_num_disks to full_num_disks - 1
+				
+			end repeat
+		end if
+		
+		set num_disks to num_disks - 1
+	end repeat
+	
+end make_msfat
+
+
 on ntfs_disk_info()
 	
 	set ntfs_num to count of ntfs_disk_list
@@ -205,6 +262,12 @@ on ntfs_disk_info()
 		set is_mnt to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 19 '" & ntfs_disk_item & "'| grep 'Mounted:' | cut -c 30- | uniq"
 		set is_uuid to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 19 '" & ntfs_disk_item & "'| grep 'Partition UUID:' | cut -c 30- | uniq"
 		set is_vol to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 19 '" & ntfs_disk_item & "'| grep 'Volume Name:' | cut -c 30- | uniq"
+		
+		if is_vol is "" then
+			set ran_number to (random number from 1 to 99999) as string
+			set is_vol to "VMBCMaker" & ran_number
+		end if
+		
 		set is_type to do shell script "cat " & tmp_dir & unix_user & "full_disk_info | grep -A 19 '" & ntfs_disk_item & "'| grep 'Protocol:' | cut -c 30- | uniq"
 		
 		set make_nice_names to is_vol & tab & tab & is_size & tab & tab & is_type & tab & tab & ntfs_disk_item
@@ -265,12 +328,24 @@ on display_no_disks()
 	
 	if ntfs_count is less than 1 then
 		
-		set theAlertText to "An error has occurred."
-		set theAlertMessage to "No NTFS formated volumes could be found"
-		display alert theAlertText message theAlertMessage as critical buttons {"Ok"} default button "Ok"
-		quit
+		if ms32scan is true then
+			set theAlertText to "An error has occurred."
+			set theAlertMessage to "No volumes could be found"
+			display alert theAlertText message theAlertMessage as critical buttons {"Ok"} default button "Ok"
+			quit
+			
+		end if
+		
+		if ms32scan is false then
+			set theAlertText to "An error has occurred."
+			set theAlertMessage to "No NTFS formated volumes could be found" & return & "will now scan for other volumes"
+			display alert theAlertText message theAlertMessage as critical buttons {"Ok"} default button "Ok"
+			set ms32scan to true
+			main_prog_load()
+		end if
 		
 	end if
+	
 	
 end display_no_disks
 
@@ -292,7 +367,6 @@ on display_make_error()
 	end if
 	
 end display_make_error
-
 
 
 
@@ -345,30 +419,109 @@ on make_bootcamp_vmx()
 	
 	try
 		
-		do shell script vmware_path_unix & " create /dev/" & unix_vmware_fulldisk & " " & unix_vmware_efi & "," & unix_vmware_disknum & " " & vm_dir & "'/'" & unix_vmware_name & " ide | cat " & my_Path & " > " & vm_dir & "/" & unix_vmware_name & ".vmx"
+		--do shell script vmware_path_unix & " create /dev/" & unix_vmware_fulldisk & " " & unix_vmware_efi & "," & unix_vmware_disknum & " " & vm_dir & "'/'" & unix_vmware_name & " ide | cat " & my_Path & " > " & vm_dir & "/" & unix_vmware_name & ".vmx"
 		
-		set search_string to "XXXXAPPLESCRIPTNAMEXXXX"
+		do shell script vmware_path_unix & " create /dev/" & unix_vmware_fulldisk & " " & unix_vmware_efi & "," & unix_vmware_disknum & " " & vm_dir & "'/'" & unix_vmware_name & " ide"
+		
+		--set search_string to "XXXXAPPLESCRIPTNAMEXXXX"
 		
 		set replacement_text to unix_vmware_name
 		
-		set AppleScript's text item delimiters to ""
+		set replacement_text to do shell script "echo " & replacement_text
 		
-		set chars to every character of replacement_text
-		repeat with i from 2 to length of chars
-			
-			if item i of chars as text is equal to " " then
-				set item i of chars to "\\ "
-				
-			end if
-		end repeat
+		--set AppleScript's text item delimiters to ""
 		
-		set replacement_text to every item of chars
+		--set chars to every character of replacement_text
+		--repeat with i from 2 to length of chars
 		
+		--if item i of chars as text is equal to " " then
+		--set item i of chars to "\\ "
 		
-		do shell script "perl -pi -e 's/" & search_string & "/" & replacement_text & "/g' " & vm_dir & "/" & unix_vmware_name & "'.vmx'"
+		--end if
+		--end repeat
 		
+		--set replacement_text to every item of chars
 		
+		--	do shell script "perl -pi -e 's/" & search_string & "/" & replacement_text & "/g' " & vm_dir & "/" & unix_vmware_name & "'.vmx'"
 		
+		do shell script "cat > " & vm_dir & "/" & unix_vmware_name & ".vmx <<EOF
+
+.encoding = \"UTF-8\"
+config.version = \"8\"
+virtualHW.version = \"12\"
+scsi0.present = \"TRUE\"
+scsi0.virtualDev = \"lsisas1068\"
+sata0.present = \"TRUE\"
+memsize = \"2048\"
+mem.hotadd = \"TRUE\"
+scsi0:0.present = \"TRUE\"
+scsi0:0.fileName = \"" & replacement_text & ".vmdk\"
+scsi:0.deviceType = \"rawDisk\"
+firmware = \"efi\"
+sata0:1.present = \"TRUE\"
+sata0:1.autodetect = \"TRUE\"
+sata0:1.deviceType = \"cdrom-raw\"
+sata0:1.startConnected = \"FALSE\"
+ethernet0.present = \"TRUE\"
+ethernet0.connectionType = \"nat\"
+ethernet0.virtualDev = \"e1000e\"
+ethernet0.wakeOnPcktRcv = \"FALSE\"
+ethernet0.addressType = \"generated\"
+ethernet0.linkStatePropagation.enable = \"TRUE\"
+usb.present = \"TRUE\"
+ehci.present = \"TRUE\"
+ehci.pciSlotNumber = \"0\"
+usb_xhci.present = \"TRUE\"
+sound.present = \"TRUE\"
+sound.virtualDev = \"hdaudio\"
+sound.fileName = \"-1\"
+sound.autodetect = \"TRUE\"
+mks.enable3d = \"TRUE\"
+svga.graphicsMemoryKB = \"1048576\"
+serial0.present = \"TRUE\"
+serial0.fileType = \"thinprint\"
+pciBridge0.present = \"TRUE\"
+pciBridge4.present = \"TRUE\"
+pciBridge4.virtualDev = \"pcieRootPort\"
+pciBridge4.functions = \"8\"
+pciBridge5.present = \"TRUE\"
+pciBridge5.virtualDev = \"pcieRootPort\"
+pciBridge5.functions = \"8\"
+pciBridge6.present = \"TRUE\"
+pciBridge6.virtualDev = \"pcieRootPort\"
+pciBridge6.functions = \"8\"
+pciBridge7.present = \"TRUE\"
+pciBridge7.virtualDev = \"pcieRootPort\"
+pciBridge7.functions = \"8\"
+vmci0.present = \"TRUE\"
+hpet0.present = \"TRUE\"
+usb.vbluetooth.startConnected = \"TRUE\"
+sensor.accelerometer = \"pass-through\"
+sensor.ambientLight = \"pass-through\"
+sensor.compass = \"pass-through\"
+sensor.gyrometer = \"pass-through\"
+sensor.inclinometer = \"pass-through\"
+sensor.location = \"pass-through\"
+sensor.orientation = \"pass-through\"
+tools.syncTime = \"TRUE\"
+displayName = \"" & replacement_text & "\"
+guestOS = \"windows9-64\"
+nvram = \"" & replacement_text & ".nvram\"
+virtualHW.productCompatibility = \"hosted\"
+tools.upgrade.policy = \"upgradeAtPowerCycle\"
+powerType.powerOff = \"soft\"
+powerType.powerOn = \"soft\"
+powerType.suspend = \"soft\"
+powerType.reset = \"soft\"
+extendedConfigFile = \"" & replacement_text & ".vmxf\"
+floppy0.present = \"FALSE\"
+ehci:0.parent = \"-1\"
+ehci:0.port = \"0\"
+ehci:0.deviceType = \"video\"
+ehci:0.present = \"TRUE\"
+suspend.disabled = \"TRUE\"
+
+EOF"
 		
 	on error
 		display_make_error()
