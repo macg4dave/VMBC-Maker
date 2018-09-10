@@ -1,0 +1,210 @@
+property main_disk_list : {}
+
+property req_disk_info_list : {"Device Identifier:", "Volume Name:", "Mounted:", "File System Personality:", "Protocol:"}
+
+property all_processed_disks : {}
+
+property disk_as_items : {}
+
+property disk_as_items_without_return : {}
+
+property nice_disk_list : {}
+
+-- Program start
+
+pop_lists_prop()
+
+--outputs all_processed_disks to disk_as_items
+copy grep_find_replace(req_disk_info_list, main_disk_list, disk_as_items) to end of all_processed_disks
+
+replace_returned(disk_as_items, disk_as_items_without_return)
+
+set testlog to item 1 of disk_as_items as string
+
+log item 1 of disk_as_items_without_return
+
+set AppleScript's text item delimiters to {"File System Personality:"}
+
+set test to word 3 of item 1 of disk_as_items_without_return
+
+log "111111111111111111111"
+log test
+log "222222222222222222222"
+--log (do shell script "echo " & quoted form of item 1 of disk_as_items_without_return & " | grep 'File System Personality:'")
+
+log (do shell script "echo " & quoted form of testlog & " | grep 'File System Personality:'")
+
+
+
+--display dialog (choose from list disk_as_items_without_return)
+
+-- Program end 
+
+
+on pop_lists_prop()
+	
+	set diskutil_input to do shell script "diskutil info -all"
+	
+	set my_tid to "**********"
+	
+	set main_disk_list to make_osa_list_until(diskutil_input, my_tid)
+	
+end pop_lists_prop
+
+on make_nice_disk_list()
+	
+	
+	
+end make_nice_disk_list
+
+
+--Usage all returns in a item are replaced with a space,  must out put to a property
+on replace_returned(replace_returned_input_item, replace_returned_output_property)
+	
+	set replace_returned_output to {}
+	set replace_returned_input_item_count to count of replace_returned_input_item
+	set replace_returned_input_loop to "1"
+	
+	set osa_return to ASCII character 13
+	set return_linefeed to osa_return & (ASCII character 10)
+	
+	
+	
+	repeat until replace_returned_input_loop is equal to replace_returned_input_item_count
+		
+		set working_return_loop to item replace_returned_input_loop of replace_returned_input_item as string
+		set working_return_output to do shell script "echo " & quoted form of working_return_loop & " | tr '" & return_linefeed & "' ' '"
+		
+		
+		copy working_return_output to end of replace_returned_output_property
+		set replace_returned_input_loop to replace_returned_input_loop + 1
+		
+	end repeat
+	
+end replace_returned
+
+--Useage : Will cut a document into items when item_tid is found
+-- e.g. (input_list) shell "diskutil info -all" -- (my_tid) "**********"
+on make_osa_list_until(input_list, item_tid)
+	
+	set working_input_list to {}
+	
+	set output_list to {}
+	
+	set working_input_list to every paragraph of input_list
+	
+	set working_input_count to count of every item of working_input_list
+	
+	set loop_input_count to "1"
+	
+	set working_item_num to "1"
+	
+	repeat until loop_input_count is equal to working_input_count
+		
+		if item loop_input_count of working_input_list is equal to item_tid then
+			
+			make_list_returned(true)
+			
+			set update_item to items working_item_num thru loop_input_count of working_input_list as string
+			copy update_item to end of output_list
+			set working_item_num to loop_input_count
+			
+		end if
+		
+		set loop_input_count to loop_input_count + 1
+		
+	end repeat
+	
+	return output_list
+	
+	make_list_returned(false)
+	
+end make_osa_list_until
+
+
+--Usage reads the words to grep and then the list you want to grep,  must out put to a property
+on grep_find_replace(grep_word, input_grep_list, grep_global_property)
+	
+	set grep_output_list to {}
+	set grep_temp_list to {}
+	
+	set grep_loop_list to count of input_grep_list
+	set grep_loop_word to count of grep_word
+	
+	set grep_loop_list_count to "1"
+	
+	set grep_loop_word_count to "1"
+	
+	repeat until grep_loop_list_count is equal to grep_loop_list
+		
+		set grep_read to do shell script "echo " & quoted form of item grep_loop_list_count of input_grep_list & " | grep '" & item grep_loop_word_count of grep_word & "' | sed 's/" & item grep_loop_word_count of grep_word & "/" & item grep_loop_word_count of grep_word & "/' | tr -s ' ' | tr -s '	'"
+		
+		if grep_read is equal to "" then
+			
+			set grep_read to do shell script "echo " & quoted form of item grep_loop_word_count of grep_word & " Not Found"
+			
+		end if
+		
+		if grep_loop_word_count is not equal to grep_loop_word then
+			copy grep_read to end of grep_output_list
+		end if
+		
+		if grep_loop_word_count is not equal to grep_loop_word then
+			set grep_loop_word_count to grep_loop_word_count + 1
+		end if
+		
+		if grep_loop_word_count is equal to grep_loop_word then
+			copy compress_list(grep_output_list) to end of grep_temp_list
+			set grep_output_list to {}
+			set output_globe_result to item grep_loop_list_count of grep_temp_list
+			copy output_globe_result to end of grep_global_property
+			set grep_loop_word_count to "1"
+			set grep_loop_list_count to grep_loop_list_count + 1
+		end if
+		
+	end repeat
+	
+end grep_find_replace
+
+
+
+
+-- If a list is comprised of strings then compreses all items to 1
+--Useage compress_list(exp_list)
+on compress_list(compress_input_list)
+	
+	set output_list to {}
+	
+	set compress_input_count to count of every item of compress_input_list
+	
+	set update_item to items 1 thru compress_input_count of compress_input_list as string
+	
+	copy update_item to end of output_list
+	
+	return output_list
+	
+end compress_list
+
+
+
+
+
+
+--Adds real return key value
+--Useage make_list_returned(True). ----  Remember to set it back after make_list_returned(false)
+on make_list_returned(returned_on_of)
+	
+	if returned_on_of is true then
+		set osa_return to ASCII character 13
+		set return_linefeed to osa_return & (ASCII character 10)
+		set the text item delimiters of AppleScript to return_linefeed
+	end if
+	
+	if returned_on_of is false then
+		set the text item delimiters to AppleScript's text item delimiters
+	end if
+	
+end make_list_returned
+
+
+
